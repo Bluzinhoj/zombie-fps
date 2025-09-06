@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://djgw5pfn7y4cv"]
+
+[ext_resource type="Texture2D" uid="uid://bjk8du6v87qcj" path="res://maps/black/texture_01.png" id="1_2fahs"]
+[ext_resource type="Texture2D" uid="uid://b8djo5dx2kgjt" path="res://maps/texture_01_normal.png" id="2_s34um"]
+[ext_resource type="Texture2D" uid="uid://qapsamt2cqjo" path="res://maps/orange/texture_01.png" id="3_fxli3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_msuag"]
+albedo_texture = ExtResource("1_2fahs")
+normal_enabled = true
+normal_texture = ExtResource("2_s34um")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ck2w"]
+albedo_texture = ExtResource("3_fxli3")
+normal_enabled = true
+normal_texture = ExtResource("2_s34um")
+uv1_triplanar = true
+
+[node name="House" type="Node3D"]
+
+[node name="Floor" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_msuag")
+use_collision = true
+size = Vector3(30, 1, 30)
+
+[node name="Wall" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 8)
+material_override = SubResource("StandardMaterial3D_0ck2w")
+use_collision = true
+size = Vector3(16, 3, 0.3)
+
+[node name="Wall2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -8)
+material_override = SubResource("StandardMaterial3D_0ck2w")
+use_collision = true
+size = Vector3(16, 3, 0.3)
+
+[node name="Window" type="CSGBox3D" parent="Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76837e-07, 0, 0)
+material_override = SubResource("StandardMaterial3D_0ck2w")
+operation = 2
+size = Vector3(3, 2, 1)
+
+[node name="Wall3" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 8, 1.5, 0)
+material_override = SubResource("StandardMaterial3D_0ck2w")
+use_collision = true
+size = Vector3(16, 3, 0.3)
+
+[node name="Wall4" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 1.5, 0)
+material_override = SubResource("StandardMaterial3D_0ck2w")
+use_collision = true
+size = Vector3(16, 3, 0.3)

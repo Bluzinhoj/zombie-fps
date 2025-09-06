@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bclxg8jbjt3dj"]
+
+[ext_resource type="Script" uid="uid://3if4y84ugejd" path="res://testing/player/player.gd" id="1_qh1uy"]
+[ext_resource type="Script" uid="uid://c11joxlo15ykd" path="res://testing/player/head.gd" id="2_wbg6x"]
+[ext_resource type="Script" uid="uid://jjll7tv4i16c" path="res://components/controller.gd" id="3_lmhkn"]
+[ext_resource type="Script" uid="uid://c34d6f3uushs8" path="res://components/shooting.gd" id="4_mymv2"]
+[ext_resource type="Script" uid="uid://f17wv5q7s30k" path="res://components/health.gd" id="5_7xwbe"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_qh1uy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wbg6x"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_qh1uy")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_qh1uy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_wbg6x")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+top_level = true
+script = ExtResource("2_wbg6x")
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+current = true
+
+[node name="RayCast3D" type="RayCast3D" parent="Head"]
+target_position = Vector3(0, 0, -200)
+
+[node name="Controller" type="Node" parent="." node_paths=PackedStringArray("player", "head")]
+script = ExtResource("3_lmhkn")
+player = NodePath("..")
+head = NodePath("../Head")
+metadata/_custom_type_script = "uid://jjll7tv4i16c"
+
+[node name="Shooting" type="Node" parent="." node_paths=PackedStringArray("raycast")]
+script = ExtResource("4_mymv2")
+raycast = NodePath("../Head/RayCast3D")
+metadata/_custom_type_script = "uid://c34d6f3uushs8"
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("5_7xwbe")
+health = 20
+metadata/_custom_type_script = "uid://f17wv5q7s30k"
+
+[connection signal="took_damage" from="Health" to="." method="_on_health_took_damage"]

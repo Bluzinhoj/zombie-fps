@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cittclhw6bfiu"]
+
+[ext_resource type="Script" uid="uid://bx4p6hslmrg5a" path="res://testing/enemy/enemy.gd" id="1_p5qu5"]
+[ext_resource type="Material" uid="uid://7jfyunxbl007" path="res://maps/texture.tres" id="2_x8p5j"]
+[ext_resource type="Script" uid="uid://f17wv5q7s30k" path="res://components/health.gd" id="3_vad3a"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_t3y4c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p5qu5"]
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_p5qu5")
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("2_x8p5j")
+mesh = SubResource("CapsuleMesh_t3y4c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_p5qu5")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.18636, 0)
+billboard = 1
+double_sided = false
+text = "Placeholder"
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_vad3a")
+health = 50
+metadata/_custom_type_script = "uid://f17wv5q7s30k"
+
+[connection signal="empty" from="Health" to="." method="_on_health_empty"]
+[connection signal="took_damage" from="Health" to="." method="_on_health_took_damage"]

@@ -1,0 +1,130 @@
+{
+	"categories": [
+		{
+			"uuid": "10eda84f-de1a-401f-a57c-17370fc39ba8",
+			"title": "Task",
+			"color": "8cc674"
+		}
+	],
+	"stages": [
+		{
+			"uuid": "5a0b32d3-c2bf-4016-8939-c0473ad8c832",
+			"title": "Todo",
+			"tasks": [
+				"ee80ae0d-f514-4fa0-98e5-9a01010c6bad",
+				"d625e927-e081-414d-b2ba-459782e16e9e",
+				"a65fa74e-affe-4917-9dcc-e9b8155dfa50"
+			]
+		},
+		{
+			"uuid": "ab4f5f01-d751-4a06-a494-26bf2027258f",
+			"title": "Doing",
+			"tasks": []
+		},
+		{
+			"uuid": "162bd775-44bb-433e-9249-dfb2412e718d",
+			"title": "Done",
+			"tasks": [
+				"8d558c10-7609-46ff-ba8f-5a6e99b76999",
+				"82ee1a0d-07dd-45ce-bf80-cd2a3d0e0baf",
+				"13cd5c00-67ae-48c8-be20-dd2ef3092ec0"
+			]
+		}
+	],
+	"tasks": [
+		{
+			"uuid": "6938d6b2-a721-4d0f-833c-217a4907a08c",
+			"title": "StateMachine",
+			"description": "",
+			"category": "10eda84f-de1a-401f-a57c-17370fc39ba8",
+			"steps": []
+		},
+		{
+			"uuid": "82ee1a0d-07dd-45ce-bf80-cd2a3d0e0baf",
+			"title": "player",
+			"description": "",
+			"category": "10eda84f-de1a-401f-a57c-17370fc39ba8",
+			"steps": [
+				{
+					"details": "basic movement (wasd + jump)\n\n",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "8d558c10-7609-46ff-ba8f-5a6e99b76999",
+			"title": "shooting",
+			"description": "",
+			"category": "10eda84f-de1a-401f-a57c-17370fc39ba8",
+			"steps": []
+		},
+		{
+			"uuid": "13cd5c00-67ae-48c8-be20-dd2ef3092ec0",
+			"title": "enemy",
+			"description": "",
+			"category": "10eda84f-de1a-401f-a57c-17370fc39ba8",
+			"steps": [
+				{
+					"details": "Follow The Player",
+					"done": true
+				},
+				{
+					"details": "Damage the Player",
+					"done": true
+				},
+				{
+					"details": "Take damage from player",
+					"done": true
+				}
+			]
+		},
+		{
+			"uuid": "a65fa74e-affe-4917-9dcc-e9b8155dfa50",
+			"title": "make window",
+			"description": "",
+			"category": "10eda84f-de1a-401f-a57c-17370fc39ba8",
+			"steps": [
+				{
+					"details": "break window",
+					"done": false
+				},
+				{
+					"details": "fix window",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "ee80ae0d-f514-4fa0-98e5-9a01010c6bad",
+			"title": "make spawner",
+			"description": "",
+			"category": "10eda84f-de1a-401f-a57c-17370fc39ba8",
+			"steps": []
+		},
+		{
+			"uuid": "d625e927-e081-414d-b2ba-459782e16e9e",
+			"title": "gameplay loop",
+			"description": "",
+			"category": "10eda84f-de1a-401f-a57c-17370fc39ba8",
+			"steps": [
+				{
+					"details": "waves system",
+					"done": false
+				}
+			]
+		}
+	],
+	"layout": {
+		"columns": [
+			[
+				"5a0b32d3-c2bf-4016-8939-c0473ad8c832"
+			],
+			[
+				"ab4f5f01-d751-4a06-a494-26bf2027258f"
+			],
+			[
+				"162bd775-44bb-433e-9249-dfb2412e718d"
+			]
+		]
+	}
+}

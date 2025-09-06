@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://cbpxtbral6rug"]
+
+[ext_resource type="Script" uid="uid://xivcvht43atk" path="res://testing/target/target.gd" id="1_b7b5h"]
+[ext_resource type="Texture2D" uid="uid://b8djo5dx2kgjt" path="res://maps/texture_01_normal.png" id="1_hyuno"]
+[ext_resource type="Script" uid="uid://f17wv5q7s30k" path="res://components/health.gd" id="3_knvi1"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qh04p"]
+load_path = "res://.godot/imported/texture_01.png-4a330f451df7e222a18c443f104d644c.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k8f8b"]
+albedo_texture = SubResource("CompressedTexture2D_qh04p")
+normal_enabled = true
+normal_texture = ExtResource("1_hyuno")
+uv1_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_nt2wp"]
+material = SubResource("StandardMaterial3D_k8f8b")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qh04p"]
+
+[node name="Target" type="StaticBody3D"]
+script = ExtResource("1_b7b5h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_nt2wp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_qh04p")
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.76481, 0)
+billboard = 1
+double_sided = false
+text = "placeholder"
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("3_knvi1")
+health = 100
+metadata/_custom_type_script = "uid://f17wv5q7s30k"
+
+[connection signal="empty" from="Health" to="." method="_on_health_empty"]
+[connection signal="took_damage" from="Health" to="." method="_on_health_took_damage"]
